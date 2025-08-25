@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function FibonacciComponent() {
   const [fibonacci, setFibonacci] = useState([]);
-  const [heightScale, setHeightScale] = useState(0.11);
+  const heightScale = 0.11;
   const svgHeight = 510;
 
   const generateFibonacci = () => {
