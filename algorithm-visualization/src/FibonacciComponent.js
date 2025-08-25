@@ -15,9 +15,15 @@ export default function FibonacciComponent() {
   };
 
   return (
-    <div className="size-1/2 justify-center">
-      <h2 className="text-4xl font-bold mb-4">Fibonacci</h2>
-      <svg width={850} height={svgHeight} className="bg-slate-900">
+    <div className="grid grid-cols-5">
+      <h2 className="text-4xl font-bold mb-4 col-start-3 col-span-1">
+        Fibonacci
+      </h2>
+      <svg
+        viewBox={`0 0 850 ${svgHeight}`}
+        className="w-full h-auto bg-slate-900 col-start-2 col-span-3"
+        preserveAspectRatio="xMidYMid meet"
+      >
         {fibonacci.map((num, i) => (
           <g key={i}>
             <rect
@@ -40,7 +46,7 @@ export default function FibonacciComponent() {
         ))}
       </svg>
       <button
-        className="bg-blue-600 p-5 m-5 rounded-xl"
+        className="bg-blue-600 hover:bg-blue-950 p-5 m-5 rounded-xl col-start-3 col-span-1"
         onClick={generateFibonacci}
       >
         Generate Fibonacci
