@@ -3,30 +3,34 @@ import { useEffect } from "react";
 
 export default function D3Test() {
   useEffect(() => {
-    const matrix = [50, 100, 150, 200];
+    const matrix = [100, 200, 300, 400];
 
     const svg = d3
-      .select("div")
+      .select("#svg")
       .append("svg")
-      .attr("width", 850)
-      .attr("height", 510)
-      .attr("class", "bg-slate-900");
+      .attr("viewBox", "0 0 850 510")
+      .attr("perserveApectRatio", "xMidyMid meet");
 
     svg
       .selectAll("rect")
       .data(matrix)
       .join("rect")
-      .attr("x", (d, i) => i * 40)
-      .attr("y", (d) => 490 - d)
+      .attr("x", (d, i) => i * 100 + 220)
+      .attr("y", 490)
       .attr("width", 30)
-      .attr("height", (d) => d)
-      .attr("fill", "steelblue");
+      .attr("fill", "steelblue")
+      .transition()
+      .delay((d, i) => i * 200)
+      .duration(800)
+      .ease(d3.easeCubic)
+      .attr("y", (d) => 490 - d)
+      .attr("height", (d) => d);
 
     svg
       .selectAll("text")
       .data(matrix)
       .join("text")
-      .attr("x", (d, i) => i * 40 + 15)
+      .attr("x", (d, i) => i * 100 + 220)
       .attr("y", 490 + 15)
       .attr("textAnchor", "middle")
       .attr("fontSize", 12)
@@ -36,5 +40,15 @@ export default function D3Test() {
       svg.remove();
     };
   }, []);
-  return <div id="svg"></div>;
+  return (
+    <div className="grid grid-cols-5">
+      <h2 className="text-4xl font-bold mb-4 col-start-3 col-span-1">
+        Testing
+      </h2>
+      <div
+        id="svg"
+        className="w-full h-auto bg-slate-900 col-start-2 col-span-3"
+      ></div>
+    </div>
+  );
 }

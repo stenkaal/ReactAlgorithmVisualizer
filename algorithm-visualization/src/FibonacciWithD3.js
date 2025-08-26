@@ -24,16 +24,23 @@ export default function FibonacciWithD3() {
       .attr("viewBox", `0 0 900 ${svgHeight}`)
       .attr("perserveApectRatio", "xMidyMid meet");
 
+    //Visualize data as SVG rectangles
     svg
       .selectAll("rect")
       .data(data)
       .join("rect")
       .attr("x", (d, i) => i * xScale)
-      .attr("y", (d) => 570 - d * heightScale)
+      .attr("y", (d) => svgHeight - 30)
       .attr("width", 30)
-      .attr("height", (d) => d * heightScale)
-      .attr("fill", "steelblue");
+      .attr("fill", "steelblue")
+      .transition()
+      .delay((d, i) => i * 200)
+      .duration(800)
+      .ease(d3.easeCubic)
+      .attr("y", (d) => svgHeight - 30 - d * heightScale)
+      .attr("height", (d) => d * heightScale);
 
+    //Make labels based on data
     svg
       .selectAll("text")
       .data(data)
