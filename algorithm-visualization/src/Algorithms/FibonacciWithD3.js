@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 export default function FibonacciWithD3() {
   const [data, setFibonacci] = useState([]);
-  const heightScale = 0.11;
+  const heightScale = 0.12;
   const svgHeight = 600;
   const xScale = 45;
 
@@ -18,6 +18,7 @@ export default function FibonacciWithD3() {
   };
 
   useEffect(() => {
+    //Create svg element
     const svg = d3
       .select("#svg")
       .append("svg")

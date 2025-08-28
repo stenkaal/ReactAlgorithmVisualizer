@@ -1,6 +1,9 @@
+import FibonacciWithD3 from "./Algorithms/FibonacciWithD3";
+import InsertionSort from "./Algorithms/InsertionSort";
 // import FibonacciComponent from "./FibonacciComponent";
 // import D3Test from "./D3Test";
-import FibonacciWithD3 from "./FibonacciWithD3";
+// import BubbleSort from "./Algorithms/BubbleSort";
+// import SelectionSort from "./Algorithms/SelectionSort";
 
 export default function App() {
   return (
@@ -9,6 +12,9 @@ export default function App() {
         DSA - Data Structures & Algorithms
       </h1>
       <FibonacciWithD3 />
+      <InsertionSort />
+      {/* <SelectionSort /> */}
+      {/* <BubbleSort /> */}
       {/* <D3Test /> */}
       {/* <FibonacciComponent /> */}
     </div>
